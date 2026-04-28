@@ -36,12 +36,6 @@ jobs:
           source: |
             .
           target: ${{ secrets.APP_DIR }}
-          # Exclude heavy or unnecessary paths from upload
-          exclude: |
-            **/.git/**
-            **/node_modules/**
-            **/.media/**
-            **/.sessions/**
 
       - name: Deploy with Docker Compose
         uses: appleboy/ssh-action@v1.2.0
