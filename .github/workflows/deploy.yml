@@ -33,8 +33,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT || 22 }}
-          source: |
-            .
+          source: "."
           target: ${{ secrets.APP_DIR }}
 
       - name: Deploy with Docker Compose
