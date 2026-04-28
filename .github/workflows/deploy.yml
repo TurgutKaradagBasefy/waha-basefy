@@ -1,6 +1,9 @@
 name: Deploy to Server (SSH + Docker Compose)
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch: {}
 
 permissions:
