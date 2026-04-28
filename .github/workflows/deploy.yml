@@ -13,6 +13,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Validate required secrets
+        run: |
+          set -euo pipefail
+          [ -n "${{ secrets.SSH_HOST }}" ] || (echo "Missing secret: SSH_HOST" && exit 1)
+          [ -n "${{ secrets.SSH_USER }}" ] || (echo "Missing secret: SSH_USER" && exit 1)
+          [ -n "${{ secrets.SSH_KEY }}" ] || (echo "Missing secret: SSH_KEY" && exit 1)
+          [ -n "${{ secrets.APP_DIR }}" ] || (echo "Missing secret: APP_DIR" && exit 1)
+          echo "All required secrets are present."
+
       - name: Ensure app directory exists
         uses: appleboy/ssh-action@v1.2.0
         with:
